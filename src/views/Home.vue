@@ -1,19 +1,18 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Play with me (line 4 of Home.vue)"/>
-  </div>
+  <Slider></Slider>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from "@/components/HelloWorld.vue";
+import Slider from "@/components/Slider.vue";
 
 @Options({
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
+    HelloWorld,
+    Slider
   }
 })
 
