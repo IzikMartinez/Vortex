@@ -1,5 +1,6 @@
 <template>
-  <img src="../assets/test.gif" alt="titties" />
+<!--  <img src="../assets/test.gif" alt="titties" />-->
+  <h3>slider</h3>
 </template>
 
 <script>
