@@ -1,14 +1,31 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/products">Products</router-link> |
-    <router-link to="/instructions">Instructions</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="app">
+    <div class="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/products">Products</router-link>
+      <router-link to="/instructions">Instructions</router-link>
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view />
   </div>
-  <router-view/>
 </template>
 
 <style>
+:root {
+  --bg-color: #f1e2cd;
+  --navbar-color: #ab1097;
+  --navbar-contrast: #1097ab;
+  --bubble-color: #fdcfb0;
+  --light-text: #ffebc8;
+  --dark-text: #484848;
+  --title-font: Garamond, serif;
+  --body-font: Montserrat, sans-serif;
+}
+
+* {
+  background-color: var(--bg-color);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,16 +34,33 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.nav {
+  padding-top: 3vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--navbar-color);
+  height: 7vh;
+  position: absolute;
+  width: 100%;
 }
 
-#nav a {
+.nav a {
+  top: 0;
+  left: 0;
+  right: 0;
   font-weight: bold;
-  color: #2c3e50;
+  font-size: 1.3em;
+  text-decoration: none;
+  margin-right: 2vw;
+  background-color: var(--navbar-color);
+  color: var(--light-text);
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.nav a.router-link-exact-active {
+  background-color: var(--navbar-contrast);
+  color: var(--light-text);
+  padding: 1.1em;
+  border-radius: 10px;
 }
 </style>
