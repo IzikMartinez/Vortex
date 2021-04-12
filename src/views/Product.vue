@@ -1,12 +1,12 @@
 <template>
   <h1>hi</h1>
     <div class="bubbles">
-      <Bubble class="bubble" title="Lorem Ipsum"></Bubble>
-      <Bubble class="bubble" title="Dolor Sit Amet"></Bubble>
-      <Bubble class="bubble" title="Consectectur"></Bubble>
-      <Bubble class="bubble" title="Adipisicing "></Bubble>
-      <Bubble class="bubble" title="Facere, Iusto"></Bubble>
-      <Bubble class="bubble" title="Mario Facto"></Bubble>
+      <ProductBubble class="bubble" title="Blue Fountain"></ProductBubble>
+      <ProductBubble class="bubble" title="Green Tower Fountain"></ProductBubble>
+      <ProductBubble class="bubble" title="Green Sphere Fountain"></ProductBubble>
+      <ProductBubble class="bubble" title="Adipisicing "></ProductBubble>
+      <ProductBubble class="bubble" title="Facere, Iusto"></ProductBubble>
+      <ProductBubble class="bubble" title="Mario Facto"></ProductBubble>
     </div>
 </template>
 
