@@ -3,7 +3,7 @@
     <h3 class="titleClass">{{ title }}</h3>
     <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, iusto?</p>
     <img
-      src="@/assets/placeholder.png"
+      src="@/assets/BlueFountain.jpg"
       alt="placeholder"
     />
   </div>
