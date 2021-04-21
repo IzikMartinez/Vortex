@@ -1,19 +1,23 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    nav bar
-    slider
-
-    component for each idem
+    nav bar slider component for each idem
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+
+@Options({
   props: {
     msg: String
   }
+})
+export default class HelloWorld extends Vue {
+  // Data
+  msg!: string; // the ! means that this is a local variable that shares the name of a prop.
+  // Computed
+  // Methods
 }
 </script>
 

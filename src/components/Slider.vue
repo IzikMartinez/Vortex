@@ -1,5 +1,5 @@
 <template>
-<!--  <img src="../assets/test.gif" alt="titties" />-->
+  <!--  <img src="../assets/test.gif" alt="titties" />-->
   <h3>slider</h3>
 </template>
 
@@ -12,9 +12,7 @@ export default {
 
     return { tits };
   }
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,37 +1,34 @@
 <template>
   <h1>hi</h1>
-    <div class="bubbles">
-      <ProductBubble class="bubble" title="Blue Fountain"></ProductBubble>
-      <ProductBubble class="bubble" title="Green Tower Fountain"></ProductBubble>
-      <ProductBubble class="bubble" title="Green Sphere Fountain"></ProductBubble>
-      <ProductBubble class="bubble" title="Adipisicing "></ProductBubble>
-      <ProductBubble class="bubble" title="Facere, Iusto"></ProductBubble>
-      <ProductBubble class="bubble" title="Mario Facto"></ProductBubble>
-    </div>
+  <div class="bubbles">
+    <Bubble class="bubble" title="Lorem Ipsum" description="Ipso facto" price="700"></Bubble>
+    <Bubble class="bubble" title="Facere, Iusto" description="This is a fountain" price="1800"></Bubble>
+    <Bubble class="bubble" title="Mario Facto" description="This costs 1000" price="200"></Bubble>
+  </div>
 </template>
 
 <script lang="ts">
 // @ is an alias to /src
-import ProductBubble from "@/components/fragments/ProductBubble.vue";
+import Bubble from "@/components/fragments/Bubble.vue";
 
 export default {
   name: "Product",
   components: {
-    ProductBubble
+    Bubble
   }
-}
+};
 </script>
 
 <style>
-  .bubbles {
-    padding-top: 15vh;
-    padding-bottom: 5vh;
-    display: grid;
-    grid-template-columns: auto auto auto;
-  }
+.bubbles {
+  padding-top: 15vh;
+  padding-bottom: 5vh;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
 
-  .bubble {
-    position: relative;
-    margin-bottom: 15px;
-  }
+.bubble {
+  position: relative;
+  margin-bottom: 15px;
+}
 </style>

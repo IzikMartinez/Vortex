@@ -1,28 +1,18 @@
 <template>
-  <div class="bubbles">
-    <Bubble class="bubble" title="Lorem Ipsum"></Bubble>
-    <Bubble class="bubble" title="Dolor Sit Amet"></Bubble>
-    <Bubble class="bubble" title="Consectectur"></Bubble>
-    <Bubble class="bubble" title="Adipisicing "></Bubble>
-    <Bubble class="bubble" title="Facere, Iusto"></Bubble>
-    <Bubble class="bubble" title="Mario Facto"></Bubble>
-  </div>
+  <h1>Vortex Media</h1>
 </template>
 
 <script lang="ts">
 // @ is an alias to /src
-import Bubble from "@/components/fragments/Bubble.vue";
 
 export default {
   name: "Home",
   components: {
-    Bubble
   }
-}
+};
 </script>
 
 <style>
-
 .bubbles {
   padding-top: 15vh;
   padding-bottom: 5vh;

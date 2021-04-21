@@ -6,6 +6,9 @@
       <router-link to="/instructions">Instructions</router-link>
       <router-link to="/about">About</router-link>
     </div>
+    <div class="cart">
+      <router-link to="">View Cart</router-link>
+    </div>
     <router-view />
   </div>
 </template>
