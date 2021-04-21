@@ -1,11 +1,10 @@
 <template>
   <div class="BubbleBody">
     <h3 class="titleClass">{{ title }}</h3>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, iusto?</p>
-    <img
-      src="@/assets/placeholder.png"
-      alt="placeholder"
-    />
+    <p class="description">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, iusto?
+    </p>
+    <img src="@/assets/placeholder.png" alt="placeholder" />
   </div>
 </template>
 
@@ -22,7 +21,6 @@ export default {
 </script>
 
 <style scoped>
-
 .BubbleBody {
   background-color: var(--navbar-color);
   margin-right: auto;

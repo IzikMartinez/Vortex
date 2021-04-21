@@ -1,11 +1,10 @@
 <template>
   <div class="BubbleBody">
     <h3 class="titleClass">{{ title }}</h3>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, iusto?</p>
-    <img
-      src="@/assets/placeholder.png"
-      alt="placeholder"
-    />
+    <p class="description">{{ description }}</p>
+    <p class="price">${{ price }}</p>
+    <img src="@/assets/placeholder.png" alt="placeholder" />
+    <button class="cartBtn">Add to cart</button>
   </div>
 </template>
 
@@ -13,7 +12,9 @@
 export default {
   name: "Bubble",
   props: {
-    title: String
+    title: String,
+    description: String,
+    price: Number
   },
   setup() {
     console.log("setup complete");
@@ -22,7 +23,6 @@ export default {
 </script>
 
 <style scoped>
-
 .BubbleBody {
   background-color: var(--navbar-color);
   margin-right: auto;
