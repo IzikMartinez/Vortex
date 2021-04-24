@@ -1,9 +1,24 @@
 <template>
   <h1>hi</h1>
   <div class="bubbles">
-    <Bubble class="bubble" title="Lorem Ipsum" description="Ipso facto" price="700"></Bubble>
-    <Bubble class="bubble" title="Facere, Iusto" description="This is a fountain" price="1800"></Bubble>
-    <Bubble class="bubble" title="Mario Facto" description="This costs 1000" price="200"></Bubble>
+    <Bubble
+      class="bubble"
+      title="Lorem Ipsum"
+      description="Ipso facto"
+      price="700"
+    ></Bubble>
+    <Bubble
+      class="bubble"
+      title="Facere, Iusto"
+      description="This is a fountain"
+      price="1800"
+    ></Bubble>
+    <Bubble
+      class="bubble"
+      title="Mario Facto"
+      description="This costs 1000"
+      price="200"
+    ></Bubble>
   </div>
 </template>
 
