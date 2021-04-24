@@ -1,5 +1,9 @@
 import { createStore } from "vuex";
 
+function initialState() {
+  return {};
+}
+
 export default createStore({
   state: {
     cartItems: [
@@ -11,10 +15,16 @@ export default createStore({
   },
   mutations: {
     addToCartItems(state, payload) {
+      console.log(payload);
+      console.log(state.cartItems);
       state.cartItems.push(payload);
     },
-    removeFromCart(state) {
-      state.cartItems.pop();
+    removeFromCart(state, payload) {
+      state.cartItems.splice(payload, 1);
+    },
+    clearCart(state) {
+      const s = initialState();
+      Object.keys(state.cartItems).forEach(key => state.cartItems.pop());
     }
   },
   actions: {

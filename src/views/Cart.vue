@@ -1,9 +1,11 @@
 <template>
   <div class="items">
-    <p v-for="cartItem in cartItems" :key="cartItem.id">
+    <p v-for="(cartItem, index) in cartItems" :key="cartItem.index">
       <Dataframe :passed="cartItem.name" :price="cartItem.price"></Dataframe>
-      <button @click="removeFromCart">Remove item</button>
+      <button @click="removeFromCart(index)">Remove item</button>
     </p>
+    <button class="clear" @click="clearCart">Clear cart</button>
+    <button class="checkout" @click="$router.push('checkout')">Check out</button>
   </div>
 </template>
 
@@ -18,7 +20,7 @@ export default {
     ...mapState(["cartItems"])
   },
   methods: {
-    ...mapMutations(["removeFromCart"])
+    ...mapMutations(["removeFromCart", "clearCart"])
   }
 };
 </script>

@@ -4,7 +4,7 @@
     <p class="description">{{ description }}</p>
     <p class="description">${{ price }}</p>
     <img src="@/assets/placeholder.png" alt="placeholder" />
-    <button class="cartBtn" @click="addToCart({ title, price })">
+    <button class="cartBtn" @click="addBtn">
       Add to cart
     </button>
   </div>
@@ -23,7 +23,11 @@ export default {
     ...mapActions(["addToCart"]),
 
     addBtn() {
-      console.log("Click works");
+      const newItem = {
+        name: this.title,
+        price: this.price
+      };
+      this.addToCart(newItem);
     }
   }
 };
