@@ -2,13 +2,16 @@
   <div class="BubbleBody">
     <h3 class="titleClass">{{ title }}</h3>
     <p class="description">{{ description }}</p>
-    <p class="price">${{ price }}</p>
+    <p class="description">${{ price }}</p>
     <img src="@/assets/placeholder.png" alt="placeholder" />
-    <button class="cartBtn">Add to cart</button>
+    <button class="cartBtn" @click="addToCart({ title, price })">
+      Add to cart
+    </button>
   </div>
 </template>
 
 <script>
+import { mapActions} from "vuex";
 export default {
   name: "Bubble",
   props: {
@@ -16,8 +19,12 @@ export default {
     description: String,
     price: Number
   },
-  setup() {
-    console.log("setup complete");
+  methods: {
+    ...mapActions(["addToCart"]),
+
+    addBtn() {
+      console.log("Click works");
+    }
   }
 };
 </script>
