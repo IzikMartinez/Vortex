@@ -1,5 +1,8 @@
 <template>
-  <h1>Vortex Media</h1>
+  <div class="body">
+    <h1>Vortex Media</h1>
+    <p>Welcome to Vortex, where inner peace is a click away</p>
+  </div>
 </template>
 
 <script lang="ts">
@@ -13,6 +16,9 @@ export default {
 </script>
 
 <style>
+.body {
+  padding-top: 15vh;
+}
 .bubbles {
   padding-top: 15vh;
   padding-bottom: 5vh;
