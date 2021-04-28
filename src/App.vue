@@ -8,23 +8,45 @@
       <router-link to="/cart">View Cart</router-link>
     </div>
     <router-view />
+    <p v-if="getCartStatus">
+      <Cart />
+    </p>
   </div>
 </template>
 
+<script>
+import Cart from "@/views/Cart.vue";
+import { mapGetters } from "vuex";
+
+export default {
+  name: "App",
+  components: {
+    Cart
+  },
+  computed: {
+    ...mapGetters(["getCartStatus"])
+  }
+}
+</script>
+
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@300&family=Coda+Caption:wght@800&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap");
+
 :root {
-  --bg-color: #f1e2cd;
-  --navbar-color: #ab1097;
-  --navbar-contrast: #1097ab;
+  /* --bg-color: #f1e2cd; */
+  --bg-color: #ffeee6;
+  --navbar-color: #45063c;
+  --navbar-contrast: #6fccff;
   --bubble-color: #fdcfb0;
-  --light-text: #ffebc8;
+  --light-text: #fff4eb;
   --dark-text: #484848;
   --title-font: Garamond, serif;
   --body-font: Montserrat, sans-serif;
 }
 
-* {
+.app {
   background-color: var(--bg-color);
+  padding-bottom: 100%;
 }
 
 #app {
@@ -50,18 +72,18 @@
   top: 0;
   left: 0;
   right: 0;
+  font-family: "Antonio", sans-serif;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1.5em;
   text-decoration: none;
+  color: var(--light-text);
   margin-right: 2vw;
   background-color: var(--navbar-color);
-  color: var(--light-text);
 }
 
 .nav a.router-link-exact-active {
-  background-color: var(--navbar-contrast);
-  color: var(--light-text);
-  padding: 1.1em;
+  //background-color: var(--navbar-contrast);
+  color: var(--navbar-contrast);
   border-radius: 10px;
 }
 </style>

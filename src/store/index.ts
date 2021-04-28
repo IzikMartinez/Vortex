@@ -11,7 +11,13 @@ export default createStore({
       { name: "vortex2", price: 700 },
       { name: "vortex3", price: 1000 },
       { name: "vortex4", price: 1000 }
-    ]
+    ],
+    showCart: false
+  },
+  getters: {
+    getCartStatus(state) {
+      return state.showCart;
+    }
   },
   mutations: {
     addToCartItems(state, payload) {

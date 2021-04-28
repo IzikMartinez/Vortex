@@ -1,49 +1,58 @@
 <template>
   <h1>hi</h1>
-  <div class="bubbles">
+  <div class="bubbles" v-for="product in state.products" :key="product.index">
     <Bubble
       class="bubble"
-      title="Lorem Ipsum"
-      description="Ipso facto"
-      price="700"
-    ></Bubble>
-    <Bubble
-      class="bubble"
-      title="Facere, Iusto"
-      description="This is a fountain"
-      price="1800"
-    ></Bubble>
-    <Bubble
-      class="bubble"
-      title="Mario Facto"
-      description="This costs 1000"
-      price="200"
-    ></Bubble>
+      :title="product.name"
+      :price="product.price"
+      :path="product.image_path"
+    />
   </div>
 </template>
 
-<script lang="ts">
+
+<script>
 // @ is an alias to /src
+import axios from "axios";
+import {defineComponent, onBeforeMount, reactive, defineAsyncComponent} from "vue";
 import Bubble from "@/components/fragments/Bubble.vue";
 
-export default {
+
+export default defineComponent({
   name: "Product",
   components: {
     Bubble
+  },
+  setup() {
+    const state = reactive({
+      products: []
+    });
+
+    function getProducts() {
+      axios.get("http://localhost:8000/api/products").then(res => {
+        state.products = res.data;
+      });
+    }
+
+    onBeforeMount(() => {
+      getProducts();
+    });
+
+    return {
+      state
+    };
   }
-};
+});
 </script>
 
 <style>
 .bubbles {
-  padding-top: 15vh;
+  display: inline-grid;
+  padding-top: 12vh;
   padding-bottom: 5vh;
-  display: grid;
-  grid-template-columns: auto auto auto;
+  margin: 15px;
 }
 
 .bubble {
-  position: relative;
-  margin-bottom: 15px;
 }
 </style>
