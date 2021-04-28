@@ -5,14 +5,14 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 // @ is an alias to /src
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "Home",
-  components: {
-  }
-};
+  components: {}
+});
 </script>
 
 <style>
@@ -25,6 +25,7 @@ export default {
   display: grid;
   grid-template-columns: auto auto auto;
 }
+)
 
 .bubble {
   position: relative;

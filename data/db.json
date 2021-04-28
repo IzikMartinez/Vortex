@@ -1,8 +1,8 @@
 {
   "products": [
-    { "title":  "vortex1",  "price": 80.00 },
-    { "title":  "vortex2",  "price": 82.00 },
-    { "title":  "vortex3",  "price": 90.00 }
+    { "title":  "Enclosed Sphere Model",  "price": 1400.00, "path": "enclosed.jpg"},
+    { "title":  "Open Sphere Model",  "price": 1100.00, "path": "open.jpg"},
+    { "title":  "Closed Cylinder Model",  "price": 1200.00, "path": "cylinder.jpg" }
   ],
   "customers": []
 }
