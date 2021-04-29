@@ -1,23 +1,34 @@
 <template>
   <div class="items">
     <p v-for="(cartItem, index) in cartItems" :key="cartItem.index">
-      <Dataframe :passed="cartItem.name" :price="cartItem.price"></Dataframe>
-      <button @click="removeFromCart(index)">Remove item</button>
+      <CartItem :passed="cartItem.name" :price="cartItem.price" :index="index"></CartItem>
     </p>
     <button class="clear" @click="clearCart">Clear cart</button>
     <button class="checkout" @click="$router.push('checkout')">Check out</button>
   </div>
+  <div class="cart-total">{{ totalPrice }}</div>
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import Dataframe from "@/components/fragments/Dataframe.vue";
+import store from "@/store";
+import CartItem from "@/components/fragments/CartItem.vue";
 
 export default {
   name: "Cart",
-  components: { Dataframe },
+  components: { CartItem },
   computed: {
-    ...mapState(["cartItems"])
+    ...mapState(["cartItems"]),
+    totalPrice() {
+      const prices = store.getters.getPrices;
+      console.log(prices);
+      let total = 0;
+      let price;
+      for (price in prices) {
+        total += price;
+      }
+      return total;
+    }
   },
   methods: {
     ...mapMutations(["removeFromCart", "clearCart"])
