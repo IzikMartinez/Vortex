@@ -17,6 +17,9 @@ export default createStore({
   getters: {
     getCartStatus(state) {
       return state.showCart;
+    },
+    getPrices(state) {
+      return state.cartItems.entries();
     }
   },
   mutations: {

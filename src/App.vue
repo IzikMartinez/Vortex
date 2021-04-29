@@ -40,6 +40,7 @@ export default {
   --bubble-color: #fdcfb0;
   --light-text: #fff4eb;
   --dark-text: #484848;
+  --red: #ba0000;
   --title-font: Garamond, serif;
   --body-font: Montserrat, sans-serif;
 }
