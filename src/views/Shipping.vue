@@ -2,23 +2,54 @@
   <div class="body">
     <h1>Shipping Info</h1>
     <input class="userinfo" type="text" placeholder="Address" /><br />
-    <input class="userinfo" type="text" placeholder="Address 2 (optional)" /><br />
+    <input
+      class="userinfo"
+      type="text"
+      placeholder="Address 2 (optional)"
+    /><br />
     <input class="userinfo" type="text" placeholder="City" /><br />
     <input class="userinfo" type="text" placeholder="State" /><br />
     <input class="userinfo" type="text" placeholder="Zip" /><br />
 
     <div class="buttons">
       <button class="back" @click="$router.push('products')">Back</button>
-      <button class="back" @click="$router.push('payment')">Next</button>
+      <button class="back" @click="postCustomer">Next</button>
     </div>
-
   </div>
+  <p>{{ contactInfo }}</p>
 </template>
 
 <script>
+import axios from "axios";
+import {mapMutations} from "vuex";
+
 export default {
-  name: "Payment.vue"
-}
+  name: "Shipping.vue",
+  computed: {
+    contactInfo() {
+      return this.getContact();
+    }
+  },
+  methods: {
+    ...mapMutations(["getContact"]),
+    postCustomer() {
+      axios
+        .post("http://localhost:8000/api/customer/store", {
+          Customer: {
+            fname: this.contactInfo.firstName,
+            lname: this.contactInfo.lastName,
+            email: this.contactInfo.email
+          }
+        })
+        .then(response => {
+          if (response.status === 201) {
+            console.log(response);
+          }
+        })
+        .catch(error => console.log(error.message));
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -43,7 +74,6 @@ h1 {
   width: 20vw;
   /* FONT */
   font-size: 1.5em;
-
 }
 
 .userinfo:focus {
@@ -70,7 +100,6 @@ h1 {
   font-weight: bold;
   text-align: center;
   font-size: 1.7em;
-
 }
 
 .back:hover {

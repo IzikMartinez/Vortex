@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import customers from "./modules/customer";
 
 function initialState() {
   return {};
@@ -6,13 +7,27 @@ function initialState() {
 
 export default createStore({
   state: {
-    cartItems: [
-      { name: "vortex1", price: 1700 },
-      { name: "vortex2", price: 700 },
-      { name: "vortex3", price: 1000 },
-      { name: "vortex4", price: 1000 }
+    cartItems: [{ name: String, price: Number }],
+    showCart: false,
+    contactInfo: [
+      {
+        firstName: String,
+        lastName: String,
+        email: String
+      }
     ],
-    showCart: false
+    customerList: [
+      {
+        firstName: String,
+        lastName: String,
+        email: String,
+        address: String,
+        address2: String,
+        city: String,
+        state: String,
+        zip: String
+      }
+    ]
   },
   getters: {
     getCartStatus(state) {
@@ -24,8 +39,6 @@ export default createStore({
   },
   mutations: {
     addToCartItems(state, payload) {
-      console.log(payload);
-      console.log(state.cartItems);
       state.cartItems.push(payload);
     },
     removeFromCart(state, payload) {
@@ -34,6 +47,15 @@ export default createStore({
     clearCart(state) {
       const s = initialState();
       Object.keys(state.cartItems).forEach(key => state.cartItems.pop());
+    },
+    addContact(state, payload) {
+      state.contactInfo.push(payload);
+    },
+    getContact(state) {
+      return state.contactInfo;
+    },
+    addCustomer(state, payload) {
+      state.customerList.push(payload);
     }
   },
   actions: {
@@ -41,5 +63,7 @@ export default createStore({
       context.commit("addToCartItems", payload);
     }
   },
-  modules: {}
+  modules: {
+    customers
+  }
 });

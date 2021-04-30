@@ -5,27 +5,28 @@
     </div>
     <div class="inputs">
       <input
-        v-model="firstName"
+        v-model="customer.firstName"
         class="userinfo"
         type="text"
         id="nameF"
         placeholder="First Name"
       /><br />
       <input
-        v-model="lastName"
+        v-model="customer.lastName"
         class="userinfo"
         type="text"
         id="nameL"
         placeholder="Last Name"
       /><br />
       <input
-        v-model="email"
+        v-model="customer.email"
         class="userinfo"
         type="text"
         id="email"
         placeholder="Email"
       /><br />
       <input
+        v-model="emailAuth"
         class="userinfo"
         type="text"
         id="email_con"
@@ -36,50 +37,41 @@
 
   <div class="buttons">
     <button class="back" @click="$router.push('products')">Back</button>
-    <button class="back" @click="$router.push('payment')">Next</button>
+    <button class="back" @click="addAndRoute(), $router.push('shipping')">
+      Next
+    </button>
   </div>
 </template>
 
 <script>
-import {defineComponent, reactive, ref} from "vue";
-import axios from "axios";
+import { mapMutations } from "vuex";
 
-export default defineComponent({
+export default {
   name: "Order",
-  setup() {
-    const firstName = ref("");
-    const lastName = ref("");
-    const email = ref("");
-
-    function postCustomer() {
-      axios
-        .post("http://localhost:8000/api/customer/store", {
-          Customer: {
-            fname: firstName.value,
-            lname: lastName.value,
-            email: email.value
-          }
-        })
-        .then(response => {
-          if (response.status === 201) {
-            firstName.value = "";
-          }
-        })
-        .catch(error => console.log(error.message));
-    }
-
+  data() {
     return {
-      firstName,
-      lastName,
-      email,
-      postCustomer
+      fnameFlag: false,
+      lnameFlag: false,
+      emailFlag: false,
+      emAuthFlag: false,
+      customer: {
+        firstName: "",
+        lastName: "",
+        email: ""
+      },
+      emailAuth: ""
     };
+  },
+  methods: {
+    ...mapMutations(["addContact"]),
+    addAndRoute() {
+      this.addContact(this.customer);
+    }
   }
-});
+};
 </script>
 
 <style scoped>
-
 .body {
   padding-top: 12vh;
 }
@@ -101,16 +93,17 @@ h2 {
   appearance: none;
   outline: none;
   border-radius: 12px 0 12px 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(67, 66, 66, 0.2);
   width: 20vw;
   /* FONT */
   font-size: 1.5em;
 
+  transition: border-radius 0.4s;
 }
 
 .userinfo:focus {
   background-color: white;
-  border-radius: 0px 12px 0px 12px;
+  border-radius: 0px 15px 0px 15px;
 }
 
 .buttons {
@@ -136,12 +129,9 @@ h2 {
   font-weight: bold;
   text-align: center;
   font-size: 1.7em;
-
 }
 
 .back:hover {
   background-color: #b1129b;
 }
-
-
 </style>

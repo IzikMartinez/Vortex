@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <div class="nav">
+      <img class="nav-logo" src="assets/plus.svg" alt="logo" >
       <router-link to="/">Home</router-link>
       <router-link to="/products">Products</router-link>
       <router-link to="/instructions">Instructions</router-link>
@@ -86,5 +87,12 @@ export default {
   //background-color: var(--navbar-contrast);
   color: var(--navbar-contrast);
   border-radius: 10px;
+}
+
+.nav-logo {
+  fill: white;
+  color: white;
+  width: 40px;
+  height: 40px;
 }
 </style>

@@ -36,14 +36,19 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Order.vue")
   },
   {
-    path: "/payment",
-    name: "Payment",
-    component: () => import("../views/Payment.vue")
+    path: "/shipping",
+    name: "Shipping",
+    component: () => import("../views/Shipping.vue")
   },
   {
     path: "/bigbubble",
     name: "BigBubble",
     component: () => import("../components/BigBubble.vue")
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: () => import("../views/Admin.vue")
   }
 ];
 
