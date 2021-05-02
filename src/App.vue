@@ -1,7 +1,6 @@
 <template>
   <div class="app">
     <div class="nav">
-      <img class="nav-logo" src="assets/plus.svg" alt="logo" >
       <router-link to="/">Home</router-link>
       <router-link to="/products">Products</router-link>
       <router-link to="/instructions">Instructions</router-link>
@@ -48,6 +47,11 @@ export default {
 
 .app {
   background-color: var(--bg-color);
+  /*background-image: linear-gradient(*/
+  /*  to bottom,*/
+  /*  rgba(0, 0, 0, 0.0),*/
+  /*  rgba(0, 0, 0, 1.0)*/
+  /*);*/
   padding-bottom: 100%;
 }
 

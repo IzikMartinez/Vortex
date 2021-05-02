@@ -7,7 +7,7 @@ function initialState() {
 
 export default createStore({
   state: {
-    cartItems: [{ name: String, price: Number }],
+    cartItems: [{ name: "", price: 0}],
     showCart: false,
     contactInfo: [
       {

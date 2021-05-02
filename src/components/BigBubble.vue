@@ -7,7 +7,7 @@
     <div class="column">
       <h1 class="heading">Enclosed Sphere Model</h1>
       <p class="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        37 gallon basin with 21 inch sealed globe. Lights are aquascape LED multicolor lighting with 20lb of blue glass rock
       </p>
 
       <p class="ButtonHeading">SELECT LED</p>
@@ -27,7 +27,7 @@
       </div>
 
     </div>
-    <button class="shyster">Add to cart</button>
+    <button class="shy-btn-Cart">Add to cart</button>
   </div>
 </template>
 
@@ -48,7 +48,7 @@ template {
   background-color: var(--navbar-color);
   color: white;
   padding-top: 12vh;
-  padding-bottom: 60vh;
+  padding-bottom: 20vh;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -114,5 +114,18 @@ template {
 .price {
   font-family: "IBM Plex Serif SemiBold", monospace;
   font-size: xx-large;
+}
+
+.shy-btn-Cart {
+  outline: none;
+  border: none;
+  padding: 15px;
+  margin-top: 10vh;
+  margin-right: 19vw;
+  border-radius: 10px;
+  background-color: var(--bg-color);
+
+  font-family: "Antonio", sans-serif;
+  font-size: 1.2em;
 }
 </style>

@@ -17,7 +17,6 @@ import axios from "axios";
 import {defineComponent, onBeforeMount, reactive, defineAsyncComponent} from "vue";
 import Bubble from "@/components/fragments/Bubble.vue";
 
-
 export default defineComponent({
   name: "Product",
   components: {
