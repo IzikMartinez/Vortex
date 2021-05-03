@@ -5,21 +5,21 @@
     </div>
     <div class="inputs">
       <input
-        v-model="customer.firstName"
+        v-model="contactInfo.firstName"
         class="userinfo"
         type="text"
         id="nameF"
         placeholder="First Name"
       /><br />
       <input
-        v-model="customer.lastName"
+        v-model="contactInfo.lastName"
         class="userinfo"
         type="text"
         id="nameL"
         placeholder="Last Name"
       /><br />
       <input
-        v-model="customer.email"
+        v-model="contactInfo.email"
         class="userinfo"
         type="text"
         id="email"
@@ -40,14 +40,7 @@
     <button
       class="back"
       @click="
-        $router.push({
-          name: 'Shipping',
-          params: {
-            firstName: customer.firstName,
-            lastName: customer.lastName,
-            email: customer.email
-          }
-        })
+        $router.push({ name: 'Shipping', params: { firstName: contactInfo.firstName, lastName: contactInfo.lastName, email: contactInfo.email } })
       "
     >
       Next
@@ -56,31 +49,22 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { defineComponent, reactive, ref } from "vue";
 
-export default {
+export default defineComponent({
   name: "Order",
-  data() {
-    return {
-      fnameFlag: false,
-      lnameFlag: false,
-      emailFlag: false,
-      emAuthFlag: false,
-      customer: {
-        firstName: "",
-        lastName: "",
-        email: ""
-      },
-      emailAuth: ""
-    };
-  },
-  methods: {
-    ...mapMutations(["addContact"]),
-    addAndRoute() {
-      this.addContact(this.customer);
-    }
+  setup() {
+    const contactInfo = reactive({
+      firstName: "",
+      lastName: "",
+      email: ""
+    });
+
+    const emailAuth = ref("");
+
+    return { contactInfo, emailAuth };
   }
-};
+});
 </script>
 
 <style scoped>

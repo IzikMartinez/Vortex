@@ -1,34 +1,19 @@
 <template>
-  <div class="BubbleBody">
+  <div class="BubbleBody" @click="$router.push({ name: 'BigBubble', params: {title: title, price: price, bigDesc: prodDesc, imagePath: passPath}})" >
     <h3 class="titleClass">{{ title }}</h3>
     <p class="description">${{ price }}</p>
-    <img class="trub" :src="require('../../assets/' + path)" :alt="imagePath" /><br />
+    <img class="trub" :src="require('../../assets/' + path)" alt="imagePath" /><br />
     <button class="cartBtn" @click="addBtn">
       Add to cart
     </button>
-    <div class="svgClass">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="36"
-        height="36"
-        fill="#FFFFFF"
-        class="svgClass"
-        viewBox="0 0 16 16"
-        @click="$router.push({ name: 'BigBubble', params: {title: title, price: price, bigDesc: prodDesc, imagePath: passPath}})"
-      >
-        <path
-          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-        />
-      </svg>
-    </div>
   </div>
 </template>
 
 <script>
-
+import { defineComponent } from "vue";
 import { mapActions } from "vuex";
 
-export default {
+export default defineComponent({
   name: "Bubble",
   props: {
     title: String,
@@ -36,11 +21,6 @@ export default {
     price: Number,
     path: String,
     passPath: String
-  },
-  data() {
-    return {
-      imagePath: "cylinder.jpg"
-    };
   },
   methods: {
     ...mapActions(["addToCart"]),
@@ -50,13 +30,9 @@ export default {
         price: this.price
       };
       this.addToCart(newItem);
-    },
-
-    plusBtn() {
-      console.log("it worked!");
     }
   }
-};
+});
 </script>
 
 <style scoped>

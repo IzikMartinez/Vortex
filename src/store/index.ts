@@ -7,25 +7,13 @@ function initialState() {
 
 export default createStore({
   state: {
-    cartItems: [{ name: "", price: 0}],
+    cartItems: [{ name: null, price: null }],
     showCart: false,
     contactInfo: [
       {
         firstName: String,
         lastName: String,
         email: String
-      }
-    ],
-    customerList: [
-      {
-        firstName: String,
-        lastName: String,
-        email: String,
-        address: String,
-        address2: String,
-        city: String,
-        state: String,
-        zip: String
       }
     ]
   },
@@ -35,6 +23,9 @@ export default createStore({
     },
     getPrices(state) {
       return state.cartItems.entries();
+    },
+    getCartSize(state) {
+      return state.cartItems.length - 1;
     }
   },
   mutations: {
@@ -55,7 +46,7 @@ export default createStore({
       return state.contactInfo;
     },
     addCustomer(state, payload) {
-      state.customerList.push(payload);
+      state.contactInfo.push(payload);
     }
   },
   actions: {

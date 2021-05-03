@@ -1,59 +1,83 @@
 <template>
   <div class="body">
     <h1>Shipping Info</h1>
-    <input class="userinfo" type="text" placeholder="Address" v-model="address"/><br />
-    <input class="userinfo" type="text" placeholder="Address 2 (optional)" v-model="address2"/><br />
-    <input class="userinfo" type="text" placeholder="City" v-model="city"/><br />
-    <input class="userinfo" type="text" placeholder="State" v-model="state"/><br />
-    <input class="userinfo" type="text" placeholder="Zip" v-model="zip" /><br />
+    <form @submit.prevent="onSubmit">
+      <input
+        class="userinfo"
+        type="text"
+        placeholder="Address"
+        v-model="form.address"
+      /><br />
+      <input
+        class="userinfo"
+        type="text"
+        placeholder="Address 2 (optional)"
+        v-model="form.address2"
+      /><br />
+      <input
+        class="userinfo"
+        type="text"
+        placeholder="City"
+        v-model="form.city"
+      /><br />
+      <input
+        class="userinfo"
+        type="text"
+        placeholder="State"
+        v-model="form.state"
+      /><br />
+      <input
+        class="userinfo"
+        type="text"
+        placeholder="Zip"
+        v-model="form.zip"
+      /><br />
 
-    <div class="buttons">
-      <button class="back" @click="$router.push('products')">Back</button>
-      <button class="back" @click="postCustomer">Next</button>
-    </div>
+      <div class="buttons">
+        <button class="back" type="submit">Submit</button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import { mapMutations } from "vuex";
+import { defineComponent, reactive } from "vue";
+import { createCustomer } from "../firebase";
 
-export default {
+export default defineComponent({
   name: "Shipping.vue",
   props: {
     firstName: String,
     lastName: String,
     email: String
   },
-  data() {
-    return {
+  setup(props) {
+    const form = reactive({
+      firstName: props.firstName,
+      lastName: props.lastName,
+      email: props.email,
       address: "",
       address2: "",
       city: "",
       state: "",
       zip: ""
+    });
+
+    const onSubmit = async () => {
+      await createCustomer({ ...form });
+      form.firstName = "";
+      form.lastName = "";
+      form.email = "";
+      form.address = "";
+      form.address2 = "";
+      form.city = "";
+      form.state = "";
+      form.zip = "";
     };
-  },
-  methods: {
-    ...mapMutations(["getContact"]),
-    postCustomer() {
-      axios
-        .post("http://localhost:8000/api/customer/store", {
-          Customer: {
-            fname: this.firstName,
-            lname: this.lastName,
-            email: this.email
-          }
-        })
-        .then(response => {
-          if (response.status === 201) {
-            console.log(response);
-          }
-        })
-        .catch(error => console.log(error.message));
-    }
+
+    return { form, onSubmit };
   }
-};
+});
 </script>
 
 <style scoped>

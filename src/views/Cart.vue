@@ -1,7 +1,7 @@
 <template>
   <div class="items">
     <p v-for="(cartItem, index) in cartItems" :key="cartItem.index">
-      <template v-if="cartItem.name !== ''">
+      <template v-if="cartItem.name !== null">
         <CartItem
           :passed="cartItem.name"
           :price="cartItem.price"
@@ -16,7 +16,6 @@
       </button>
     </div>
   </div>
-  <div class="cart-total">{{ totalPrice }}</div>
 </template>
 
 <script>

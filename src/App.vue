@@ -5,7 +5,7 @@
       <router-link to="/products">Products</router-link>
       <router-link to="/instructions">Instructions</router-link>
       <router-link to="/about">About</router-link>
-      <router-link to="/cart">View Cart</router-link>
+      <router-link to="/cart">View Cart ({{ getCartSize }})</router-link>
     </div>
     <router-view />
     <p v-if="getCartStatus">
@@ -16,17 +16,23 @@
 
 <script>
 import Cart from "@/views/Cart.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
+import { defineComponent, ref } from "vue";
 
-export default {
+export default defineComponent({
   name: "App",
   components: {
     Cart
   },
+  setup() {
+    function cartItems() {
+      return mapState(["cartItems"]);
+    }
+  },
   computed: {
-    ...mapGetters(["getCartStatus"])
+    ...mapGetters(["getCartStatus", "getCartSize"])
   }
-}
+});
 </script>
 
 <style>
@@ -35,7 +41,7 @@ export default {
 :root {
   /* --bg-color: #f1e2cd; */
   --bg-color: #ffeee6;
-  --navbar-color: #45063c;
+  --navbar-color: #3c0833;
   --navbar-contrast: #6fccff;
   --bubble-color: #fdcfb0;
   --light-text: #fff4eb;

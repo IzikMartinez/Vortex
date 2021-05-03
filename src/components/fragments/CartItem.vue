@@ -24,7 +24,7 @@ export default {
   name: "CartItem",
   props: {
     passed: String,
-    price: Number,
+    price: String,
     index: Number
   },
   methods: {

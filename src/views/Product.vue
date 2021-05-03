@@ -1,6 +1,6 @@
 <template>
   <h1>hi</h1>
-  <div class="bubbles" v-for="product in state.products" :key="product.index">
+  <div class="bubbles" v-for="product in products" :key="product.index">
     <Bubble
       class="bubble"
       :title="product.name"
@@ -16,7 +16,8 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
-import {defineComponent, onBeforeMount, reactive, defineAsyncComponent} from "vue";
+import { defineComponent } from "vue";
+import { useLoadProducts } from "../firebase";
 import Bubble from "@/components/fragments/Bubble.vue";
 
 export default defineComponent({
@@ -25,22 +26,9 @@ export default defineComponent({
     Bubble
   },
   setup() {
-    const state = reactive({
-      products: []
-    });
-
-    function getProducts() {
-      axios.get("http://localhost:8000/api/products").then(res => {
-        state.products = res.data;
-      });
-    }
-
-    onBeforeMount(() => {
-      getProducts();
-    });
-
+    const products = useLoadProducts();
     return {
-      state
+      products
     };
   }
 });
