@@ -1,7 +1,19 @@
 <template>
   <div class="body">
-    <h1>Vortex Media</h1>
-    <p>Welcome to Vortex, where inner peace is a click away</p>
+    <h1>Welcome to Vortex, where inner peace is a click away</h1>
+    <p>
+      We offer unique colorful fountains designed for helping individuals
+      maintain relaxation.
+      <br />
+    </p>
+    <video src="../assets/IntroVideo.mp4" width="900" height="500" autoplay/>
+    <p>
+      Are you in the market for a well made, and colorful fountain? One designed to help people like you achieve and maintain relaxation?  Shop our store.
+      <br />
+      <br />
+      We have the perfect fountains to help add ambiance, warmth, and relaxation
+      to your indoor living area!
+    </p>
   </div>
 </template>
 
@@ -17,18 +29,15 @@ export default defineComponent({
 
 <style>
 .body {
-  padding-top: 15vh;
+  padding-top: 10vh;
 }
-.bubbles {
-  padding-top: 15vh;
-  padding-bottom: 5vh;
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
-)
 
-.bubble {
-  position: relative;
-  margin-bottom: 15px;
+h1 {
+  font-family: "Merriweather", serif;
 }
+p {
+  font-family: "Merriweather", serif;
+  font-size: large;
+}
+
 </style>

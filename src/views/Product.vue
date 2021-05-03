@@ -1,5 +1,4 @@
 <template>
-  <h1>hi</h1>
   <div class="bubbles" v-for="product in products" :key="product.index">
     <Bubble
       class="bubble"
@@ -15,7 +14,6 @@
 
 <script>
 // @ is an alias to /src
-import axios from "axios";
 import { defineComponent } from "vue";
 import { useLoadProducts } from "../firebase";
 import Bubble from "@/components/fragments/Bubble.vue";

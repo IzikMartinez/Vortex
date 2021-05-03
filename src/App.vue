@@ -1,5 +1,8 @@
 <template>
   <div class="app">
+    <a href="">
+    <img class="nav-logo" src="./assets/StoreLogo.png" alt="Store Logo" />
+    </a>
     <div class="nav">
       <router-link to="/">Home</router-link>
       <router-link to="/products">Products</router-link>
@@ -100,8 +103,7 @@ export default defineComponent({
 }
 
 .nav-logo {
-  fill: white;
-  color: white;
+  position: center;
   width: 40px;
   height: 40px;
 }
