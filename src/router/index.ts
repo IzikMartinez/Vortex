@@ -32,18 +32,20 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/checkout",
-    name: "Order",
-    component: () => import("../views/Order.vue")
+    name: "checkout",
+    component: () => import("../views/Contact.vue")
   },
   {
     path: "/shipping",
     name: "Shipping",
-    component: () => import("../views/Shipping.vue")
+    component: () => import("../views/Shipping.vue"),
+    props: true
   },
   {
     path: "/bigbubble",
     name: "BigBubble",
-    component: () => import("../components/BigBubble.vue")
+    component: () => import("../components/BigBubble.vue"),
+    props: true
   },
   {
     path: "/admin",

@@ -1,34 +1,38 @@
 <template>
   <div class="body">
     <h1>Shipping Info</h1>
-    <input class="userinfo" type="text" placeholder="Address" /><br />
-    <input
-      class="userinfo"
-      type="text"
-      placeholder="Address 2 (optional)"
-    /><br />
-    <input class="userinfo" type="text" placeholder="City" /><br />
-    <input class="userinfo" type="text" placeholder="State" /><br />
-    <input class="userinfo" type="text" placeholder="Zip" /><br />
+    <input class="userinfo" type="text" placeholder="Address" v-model="address"/><br />
+    <input class="userinfo" type="text" placeholder="Address 2 (optional)" v-model="address2"/><br />
+    <input class="userinfo" type="text" placeholder="City" v-model="city"/><br />
+    <input class="userinfo" type="text" placeholder="State" v-model="state"/><br />
+    <input class="userinfo" type="text" placeholder="Zip" v-model="zip" /><br />
 
     <div class="buttons">
       <button class="back" @click="$router.push('products')">Back</button>
       <button class="back" @click="postCustomer">Next</button>
     </div>
   </div>
-  <p>{{ contactInfo }}</p>
 </template>
 
 <script>
 import axios from "axios";
-import {mapMutations} from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   name: "Shipping.vue",
-  computed: {
-    contactInfo() {
-      return this.getContact();
-    }
+  props: {
+    firstName: String,
+    lastName: String,
+    email: String
+  },
+  data() {
+    return {
+      address: "",
+      address2: "",
+      city: "",
+      state: "",
+      zip: ""
+    };
   },
   methods: {
     ...mapMutations(["getContact"]),
@@ -36,9 +40,9 @@ export default {
       axios
         .post("http://localhost:8000/api/customer/store", {
           Customer: {
-            fname: this.contactInfo.firstName,
-            lname: this.contactInfo.lastName,
-            email: this.contactInfo.email
+            fname: this.firstName,
+            lname: this.lastName,
+            email: this.email
           }
         })
         .then(response => {

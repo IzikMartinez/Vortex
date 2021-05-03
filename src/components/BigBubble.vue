@@ -1,44 +1,55 @@
 <template>
   <div class="BubbleBody">
     <div class="column">
-      <img class="bigImage" src="../assets/enclosed_full.jpg" alt="enclosed sphere" />
-      <div class="price">$1400</div>
+      <img class="bigImage" :src="require('../assets/' + imagePath)" :alt="imagePath" /><br />
+      <div class="price">${{ price }}</div>
     </div>
     <div class="column">
-      <h1 class="heading">Enclosed Sphere Model</h1>
-      <p class="description">
-        37 gallon basin with 21 inch sealed globe. Lights are aquascape LED multicolor lighting with 20lb of blue glass rock
-      </p>
+      <h1 class="heading">{{ title }}</h1>
+      <h3 class="description">{{ bigDesc }}</h3>
 
       <p class="ButtonHeading">SELECT LED</p>
       <div class="buttons">
-        <button class="shyster">Red</button>
-        <button class="shyster">Blue</button>
-        <button class="shyster">Green</button>
-        <button class="butn">Purple</button>
-        <button class="shyster">RGB</button>
+        <button class="btn-option">Red</button>
+        <button class="btn-option">Blue</button>
+        <button class="btn-option">Green</button>
+        <button class="btn-option">Purple</button>
+        <button class="btn-option">RGB</button>
       </div>
 
       <p class="ButtonHeading">SELECT SIZE</p>
       <div class="buttons">
-        <button class="shyster">Small</button>
-        <button class="butn">Medium</button>
-        <button class="shyster">Large</button>
+        <button class="btn-option">Small</button>
+        <button class="btn-option">Medium</button>
+        <button class="btn-option">Large</button>
       </div>
-
     </div>
-    <button class="shy-btn-Cart">Add to cart</button>
+    <button class="shy-btn-Cart" @click="addBtn">Add to cart</button>
   </div>
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: "BigBubble",
   props: {
     title: String,
-    description: String
+    bigDesc: String,
+    price: String,
+    imagePath: String
+  },
+  methods: {
+    ...mapActions(["addToCart"]),
+    addBtn() {
+      const newItem = {
+        name: this.title,
+        price: this.price
+      };
+      this.addToCart(newItem);
+    }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -54,7 +65,6 @@ template {
   margin-right: auto;
   width: 50%;
   height: 100%;
-
 }
 
 .BubbleBody .column {
@@ -74,19 +84,7 @@ template {
   font-variant: small-caps;
 }
 
-.butn {
-  outline: none;
-  border: none;
-  padding: 15px;
-  margin-left: 20px;
-  border-radius: 10px;
-  background-color: #aa20ff;
-  color: white;
-  font-family: "Antonio", sans-serif;
-  font-size: 1.2em;
-}
-
-.shyster {
+.btn-option {
   outline: none;
   border: none;
   padding: 15px;
@@ -98,7 +96,7 @@ template {
   font-size: 1.2em;
 }
 
-.shyster:hover {
+.btn-option:active {
   background-color: #aa20ff;
   color: white;
 }

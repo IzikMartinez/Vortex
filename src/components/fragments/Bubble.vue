@@ -1,7 +1,6 @@
 <template>
   <div class="BubbleBody">
     <h3 class="titleClass">{{ title }}</h3>
-    <p class="description">{{ description }}</p>
     <p class="description">${{ price }}</p>
     <img class="trub" :src="require('../../assets/' + path)" :alt="imagePath" /><br />
     <button class="cartBtn" @click="addBtn">
@@ -15,7 +14,7 @@
         fill="#FFFFFF"
         class="svgClass"
         viewBox="0 0 16 16"
-        @click="$router.push('bigbubble')"
+        @click="$router.push({ name: 'BigBubble', params: {title: title, price: price, bigDesc: prodDesc, imagePath: passPath}})"
       >
         <path
           d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
@@ -33,9 +32,10 @@ export default {
   name: "Bubble",
   props: {
     title: String,
-    description: String,
+    prodDesc: String,
     price: Number,
-    path: String
+    path: String,
+    passPath: String
   },
   data() {
     return {

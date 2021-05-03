@@ -37,7 +37,19 @@
 
   <div class="buttons">
     <button class="back" @click="$router.push('products')">Back</button>
-    <button class="back" @click="addAndRoute(), $router.push('shipping')">
+    <button
+      class="back"
+      @click="
+        $router.push({
+          name: 'Shipping',
+          params: {
+            firstName: customer.firstName,
+            lastName: customer.lastName,
+            email: customer.email
+          }
+        })
+      "
+    >
       Next
     </button>
   </div>

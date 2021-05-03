@@ -5,7 +5,9 @@
       class="bubble"
       :title="product.name"
       :price="product.price"
-      :path="product.image_path"
+      :prodDesc="product.description"
+      :path="product.thumbnail_path"
+      :passPath="product.image_path"
     />
   </div>
 </template>

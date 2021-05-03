@@ -1,7 +1,13 @@
 <template>
   <div class="items">
     <p v-for="(cartItem, index) in cartItems" :key="cartItem.index">
-      <CartItem :passed="cartItem.name" :price="cartItem.price" :index="index"></CartItem>
+      <template v-if="cartItem.name !== ''">
+        <CartItem
+          :passed="cartItem.name"
+          :price="cartItem.price"
+          :index="index"
+        ></CartItem>
+      </template>
     </p>
     <div class="buttons">
       <button class="btn-clear" @click="clearCart">Clear cart</button>
