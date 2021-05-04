@@ -69,7 +69,7 @@ export default defineComponent({
 
 <style scoped>
 .body {
-  padding-top: 12vh;
+  padding-top: var(--height);
 }
 
 h2 {

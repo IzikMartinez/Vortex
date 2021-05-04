@@ -42,6 +42,12 @@ const routes: Array<RouteRecordRaw> = [
     props: true
   },
   {
+    path: "/payment",
+    name: "Payment",
+    component: () => import("../views/Payment.vue"),
+    props: true
+  },
+  {
     path: "/bigbubble",
     name: "BigBubble",
     component: () => import("../components/BigBubble.vue"),

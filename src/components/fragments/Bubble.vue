@@ -3,9 +3,6 @@
     <h3 class="titleClass">{{ title }}</h3>
     <p class="description">${{ price }}</p>
     <img class="trub" :src="require('../../assets/' + path)" alt="imagePath" /><br />
-    <button class="cartBtn" @click="addBtn">
-      Add to cart
-    </button>
   </div>
 </template>
 

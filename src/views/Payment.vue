@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <h1>Shipping Info</h1>
+    <h1>Payment Info</h1>
     <form @submit.prevent="">
       <input
         v-model="form.CardNum"
@@ -8,7 +8,8 @@
         type="text"
         placeholder="Card Number"
         required
-      /><br />
+      />
+      <br />
       <input
         v-model="form.CardHolder"
         class="userinfo"
@@ -16,6 +17,7 @@
         placeholder="Cardholder's Name"
         required
       />
+      <br />
       <input
         v-model="form.ExpDate"
         class="userinfo"
@@ -32,7 +34,7 @@
       /><br />
     </form>
     <div class="buttons">
-      <button class="btn-submit" type="submit" @click="$router.push('products')">Back</button>
+      <button class="btn-submit" type="submit" @click="$router.push('products')">Submit</button>
     </div>
   </div>
 </template>
@@ -44,10 +46,10 @@ export default defineComponent({
   name: "Payment.vue",
   setup() {
     const form = reactive({
-      CardNum: Number,
-      CardHolder: String,
-      ExpDate: String,
-      SecurityCode: String
+      CardNum: "",
+      CardHolder: "",
+      ExpDate: "",
+      SecurityCode: ""
     });
 
     return {
@@ -59,7 +61,7 @@ export default defineComponent({
 
 <style scoped>
 .body {
-  padding-top: 15vh;
+  padding-top: var(--height);
 }
 
 h1 {

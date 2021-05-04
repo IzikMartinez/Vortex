@@ -34,7 +34,7 @@
       /><br />
 
       <div class="buttons">
-        <button class="back" type="submit">Submit</button>
+        <button class="back" type="submit" @click="$router.push('Payment')">Next</button>
       </div>
     </form>
   </div>
@@ -82,7 +82,7 @@ export default defineComponent({
 
 <style scoped>
 .body {
-  padding-top: 15vh;
+  padding-top: var(--height);
 }
 
 h1 {
