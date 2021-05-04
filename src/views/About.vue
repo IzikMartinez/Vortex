@@ -9,3 +9,9 @@
       Business Email: Vmfcustomers@gmail.com </p>
   </div>
 </template>
+
+<style>
+  .about {
+    padding-top: var(--height);
+  }
+</style>

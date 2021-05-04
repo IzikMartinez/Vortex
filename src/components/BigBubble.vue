@@ -88,7 +88,7 @@ template {
 .BubbleBody {
   background-color: var(--navbar-color);
   color: white;
-  padding-top: 12vh;
+  padding-top: 20vh;
   padding-bottom: 20vh;
   border-radius: 20px;
   margin-left: auto;

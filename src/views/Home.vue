@@ -29,7 +29,7 @@ export default defineComponent({
 
 <style>
 .body {
-  padding-top: 10vh;
+  padding-top: var(--height);
 }
 
 h1 {

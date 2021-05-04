@@ -1,14 +1,16 @@
 <template>
   <div class="app">
-    <a href="">
-    <img class="nav-logo" src="./assets/StoreLogo.png" alt="Store Logo" />
-    </a>
     <div class="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/products">Products</router-link>
-      <router-link to="/instructions">Instructions</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link to="/cart">View Cart ({{ getCartSize }})</router-link>
+      <div class="logo-div">
+        <a href=""><img class="nav-logo" src="./assets/StoreLogo.png" alt="Store Logo" /></a>
+      </div>
+      <div class="link-div">
+        <router-link to="/">Home</router-link>
+        <router-link to="/products">Products</router-link>
+        <router-link to="/instructions">Instructions</router-link>
+        <router-link to="/about">About</router-link>
+        <router-link to="/cart">View Cart ({{ getCartSize }})</router-link>
+      </div>
     </div>
     <router-view />
     <p v-if="getCartStatus">
@@ -50,6 +52,7 @@ export default defineComponent({
   --light-text: #fff4eb;
   --dark-text: #484848;
   --red: #ba0000;
+  --height: 20vh;
   --title-font: Garamond, serif;
   --body-font: Montserrat, sans-serif;
 }
@@ -78,7 +81,7 @@ export default defineComponent({
   left: 0;
   right: 0;
   background-color: var(--navbar-color);
-  height: 7vh;
+  height: 15vh;
   position: absolute;
   width: 100%;
 }
@@ -104,7 +107,8 @@ export default defineComponent({
 
 .nav-logo {
   position: center;
-  width: 40px;
-  height: 40px;
+  padding-bottom: 2rem;
+  width: 8rem;
+  height: 5rem;
 }
 </style>

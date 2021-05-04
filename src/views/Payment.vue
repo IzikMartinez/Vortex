@@ -1,24 +1,60 @@
 <template>
   <div class="body">
     <h1>Shipping Info</h1>
-    <input class="userinfo" type="text" placeholder="Address" /><br />
-    <input class="userinfo" type="text" placeholder="Address 2 (optional)" /><br />
-    <input class="userinfo" type="text" placeholder="City" /><br />
-    <input class="userinfo" type="text" placeholder="State" /><br />
-    <input class="userinfo" type="text" placeholder="Zip" /><br />
-
+    <form @submit.prevent="">
+      <input
+        v-model="form.CardNum"
+        class="userinfo"
+        type="text"
+        placeholder="Card Number"
+        required
+      /><br />
+      <input
+        v-model="form.CardHolder"
+        class="userinfo"
+        type="text"
+        placeholder="Cardholder's Name"
+        required
+      />
+      <input
+        v-model="form.ExpDate"
+        class="userinfo"
+        type="text"
+        placeholder="Expiration Date"
+        required
+      /><br />
+      <input
+        v-model="form.SecurityCode"
+        class="userinfo"
+        type="text"
+        placeholder="Security Code"
+        required
+      /><br />
+    </form>
     <div class="buttons">
-      <button class="back" @click="$router.push('products')">Back</button>
-      <button class="back" @click="$router.push('payment')">Next</button>
+      <button class="btn-submit" type="submit" @click="$router.push('products')">Back</button>
     </div>
-
   </div>
 </template>
 
 <script>
-export default {
-  name: "Payment.vue"
-}
+import { defineComponent, reactive } from "vue";
+
+export default defineComponent({
+  name: "Payment.vue",
+  setup() {
+    const form = reactive({
+      CardNum: Number,
+      CardHolder: String,
+      ExpDate: String,
+      SecurityCode: String
+    });
+
+    return {
+      form
+    };
+  }
+});
 </script>
 
 <style scoped>
@@ -43,7 +79,6 @@ h1 {
   width: 20vw;
   /* FONT */
   font-size: 1.5em;
-
 }
 
 .userinfo:focus {
@@ -70,7 +105,6 @@ h1 {
   font-weight: bold;
   text-align: center;
   font-size: 1.7em;
-
 }
 
 .back:hover {

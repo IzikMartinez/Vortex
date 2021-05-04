@@ -86,7 +86,7 @@ export default defineComponent({
 }
 
 h1 {
-  font-family: "Merriweather", Serif;
+  font-family: "Merriweather", serif;
   font-variant: small-caps;
   font-size: 1.7em;
 }

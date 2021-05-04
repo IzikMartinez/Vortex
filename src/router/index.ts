@@ -51,6 +51,26 @@ const routes: Array<RouteRecordRaw> = [
     path: "/admin",
     name: "Admin",
     component: () => import("../views/Admin.vue")
+  },
+  {
+    path: "/editProduct/:id",
+    name: "EditProduct",
+    component: () => import("../components/EditProduct.vue")
+  },
+  {
+    path: "/editOrder/:id",
+    name: "EditOrder",
+    component: () => import("../components/EditOrder.vue")
+  },
+  {
+    path: "/editCustomer/:id",
+    name: "EditCustomer",
+    component: () => import("../components/EditCustomer.vue")
+  },
+  {
+    path: "/editReview/:id",
+    name: "EditReview",
+    component: () => import("../components/EditReview.vue")
   }
 ];
 

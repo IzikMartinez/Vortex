@@ -35,7 +35,7 @@ export default defineComponent({
 <style>
 .bubbles {
   display: inline-grid;
-  padding-top: 12vh;
+  padding-top: 18vh;
   padding-bottom: 5vh;
   margin: 15px;
 }

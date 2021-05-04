@@ -1,54 +1,75 @@
 <template>
   <div class="body">
     <div class="tbl">
-      <h1>Customer Table</h1>
+      <h1>Customers</h1>
       <br />
       <table class="tbl-Customer">
         <th>First name</th>
         <th>Last name</th>
         <th>Email</th>
-        <tr v-for="customer in customers" v-bind:key="customer.index">
-          <td>{{ customer.firstName}}</td>
-          <td>{{ customer.lastName}}</td>
-          <td>{{ customer.email }}</td>
-          <button @click="deleteCustomer(product.id)">Edit</button>
-          <button @click="deleteCustomer(customer.customer_id)">Delete</button>
+        <tr v-for="{id, firstName, lastName, email} in customers" v-bind:key="id">
+          <td>{{ firstName }}</td>
+          <td>{{ lastName }}</td>
+          <td>{{ email }}</td>
+          <router-link :to="'/editCustomer/' + id">
+            <button>Edit</button>
+          </router-link>
+          <button @click="deleteCustomer(id)">Delete</button>
         </tr>
       </table>
 
-      <h1>Product Table</h1>
+      <h1>Products</h1>
       <br />
       <table class="tbl-Products">
         <th>Product Name</th>
         <th>Inventory</th>
         <th>Price</th>
         <th>Description</th>
-        <tr v-for="product in products" :key="product.index">
-          <td>{{ product.name }}</td>
-          <td>{{ product.inventory }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.description}}</td>
-          <button @click="deleteCustomer(product.id)">Edit</button>
-          <button @click="deleteCustomer(product.id)">Delete</button>
+        <tr v-for="{id, name, inventory, price, description} in products" :key="id">
+          <td>{{ name }}</td>
+          <td>{{ inventory }}</td>
+          <td>{{ price }}</td>
+          <td>{{ description }}</td>
+          <router-link :to="'/editProduct/' + id">
+            <button>Edit</button>
+          </router-link>
+          <button @click="deleteProduct(id)">Delete</button>
         </tr>
       </table>
 
-      <h1>Order Table</h1>
+
+      <h1>Orders</h1>
       <br />
       <table class="tbl-Order">
-        <th>Order ID</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zip</th>
         <th>Order Date</th>
-        <th>Completion Date</th>
+        <th>Order Total</th>
         <th>Product Name</th>
-        <th>Price</th>
-        <tr v-for="order in orders" :key="order.index">
-          <td>{{order.orderDate}}</td>
-          <td>{{order.orderTotal}}</td>
-          <td>{{order.productName}}</td>
+        <th>Customer Name</th>
+        <tr v-for="{id, orderDate, orderTotal, customerName, productName} in orders" :key="id">
+          <td>{{ orderDate }}</td>
+          <td>{{ orderTotal }}</td>
+          <td>{{ productName }}</td>
+          <td>{{ customerName }}</td>
+          <router-link :to="'/editOrder/' + id">
+            <button>Edit</button>
+          </router-link>
+          <button @click="deleteOrder(id)">Delete</button>
+        </tr>
+      </table>
+
+
+      <h1>Reviews</h1>
+      <br />
+      <table class="tbl-Order">
+        <th>Review Name</th>
+        <th>Review</th>
+        <tr v-for="{id, name, comment} in reviews" :key="id">
+          <td>{{name}}</td>
+          <td>{{comment}}</td>
+          <router-link :to="'/editReview/' + id">
+            <button>Edit</button>
+          </router-link>
+          <button @click="deleteReview(id)">Delete</button>
         </tr>
       </table>
     </div>
@@ -56,10 +77,17 @@
 </template>
 
 <script>
-import { defineComponent, onBeforeMount, reactive } from "vue";
-import axios from "axios";
-import TableRow from "../components/fragments/TableRow";
-import {useLoadCustomers, useLoadOrders, useLoadProducts, useLoadReviews} from "../firebase";
+import { defineComponent } from "vue";
+import {
+  useLoadCustomers,
+  useLoadOrders,
+  useLoadProducts,
+  deleteProduct,
+  deleteOrder,
+  deleteReview,
+  deleteCustomer,
+  useLoadReviews
+} from "../firebase";
 
 export default defineComponent({
   name: "Admin",
@@ -74,7 +102,11 @@ export default defineComponent({
       products,
       reviews,
       customers,
-      orders
+      orders,
+      deleteProduct,
+      deleteOrder,
+      deleteReview,
+      deleteCustomer
     };
   }
 });
@@ -82,7 +114,7 @@ export default defineComponent({
 
 <style scoped>
 .body {
-  padding-top: 15vh;
+  padding-top: var(--height);
   margin: auto;
   background-color: var(--navbar-color);
   width: 80%;

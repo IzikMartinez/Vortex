@@ -56,6 +56,14 @@ export const getProduct = async id => {
   return product.exists ? product.data() : null;
 };
 
+export const updateProduct = (id, product) => {
+  return productsCollection.doc(id).update(product);
+};
+
+export const deleteProduct = id => {
+  return productsCollection.doc(id).delete();
+};
+
 export const useLoadProducts = () => {
   const products = ref([]);
   const close = productsCollection.onSnapshot(snapshot => {
@@ -64,7 +72,6 @@ export const useLoadProducts = () => {
   onUnmounted(close);
   return products;
 };
-
 
 
 
@@ -77,6 +84,13 @@ export const getCustomer = async id => {
   return customer.exists ? customer.data() : null;
 };
 
+export const updateCustomer = (id, customer) => {
+  return customersCollection.doc(id).update(customer);
+};
+
+export const deleteCustomer = id => {
+  return customersCollection.doc(id).delete();
+};
 
 export const useLoadCustomers = () => {
   const customers = ref([]);
@@ -86,8 +100,6 @@ export const useLoadCustomers = () => {
   onUnmounted(close);
   return customers;
 };
-
-
 
 export const createOrder = order => {
   return ordersCollection.add(order);
